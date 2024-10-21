@@ -16,12 +16,34 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <SearchBar Grid.Column="0"
+            <SearchBar Grid.Row="0"
+                       Grid.Column="0"
                        Grid.ColumnSpan="3"
                        Placeholder="Search for content" />
-            <Button Grid.Column="3"
+            <Button Grid.Row="0"
+                    Grid.Column="3"
                     Grid.ColumnSpan="1" 
                     Text="Controls"/>
         </Grid>
+        <CollectionView Grid.Row="2"
+                        Grid.ColumnSpan="4">
+            <CollectionView.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Content 1</x:String>
+                    <x:String>Content 2</x:String>
+                    <x:String>Content 3</x:String>
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="0,10">
+                        <Frame>
+                            <Label Text="{Binding .}"
+                                   FontSize="30" />
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
