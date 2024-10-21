@@ -1,12 +1,13 @@
-﻿namespace content_library
+﻿using content_library.ViewModels;
+
+namespace content_library
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
-        public MainPage()
+        public MainPage(MainViewModel vm)
         {
             InitializeComponent();
+            BindingContext = vm;
         }
     }
 

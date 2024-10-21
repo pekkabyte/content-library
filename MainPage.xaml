@@ -1,13 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="content_library.MainPage">
+             x:Class="content_library.MainPage"
+             xmlns:viewmodel="clr-namespace:content_library.ViewModels"
+             x:DataType="viewmodel:MainViewModel">
 
     <VerticalStackLayout
         Padding="30,30"
         Spacing="15">
-        <Grid ColumnSpacing="15">
+        <Grid ColumnSpacing="15"
+              RowSpacing="15">
             <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -19,19 +24,32 @@
             <SearchBar Grid.Row="0"
                        Grid.Column="0"
                        Grid.ColumnSpan="3"
-                       Placeholder="Search for content" />
+                       Placeholder="Search for content"/>
             <Button Grid.Row="0"
                     Grid.Column="3"
                     Grid.ColumnSpan="1" 
-                    Text="Controls"/>
+                    Text="Controls"
+                    Command="{Binding ToggleCommand}"/>
+            <Button Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="1" 
+                    Text="Filter 1"/>
+            <Button Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="1" 
+                    Text="Filter 2"/>
+            <Button Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4" 
+                    Text="Sort: Ascending"/>
         </Grid>
         <CollectionView Grid.Row="2"
                         Grid.ColumnSpan="4">
             <CollectionView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
-                    <x:String>Content 1</x:String>
-                    <x:String>Content 2</x:String>
-                    <x:String>Content 3</x:String>
+                    <x:String>Author photo, Content 1</x:String>
+                    <x:String>Author photo, Content 2</x:String>
+                    <x:String>Author photo, Content 3</x:String>
                 </x:Array>
             </CollectionView.ItemsSource>
             <CollectionView.ItemTemplate>
@@ -39,7 +57,8 @@
                     <Grid Padding="0,10">
                         <Frame>
                             <Label Text="{Binding .}"
-                                   FontSize="30" />
+                                   FontSize="30"
+                                   HorizontalTextAlignment="Start"/>
                         </Frame>
                     </Grid>
                 </DataTemplate>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using content_library.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace content_library
 {
@@ -15,8 +16,11 @@ namespace content_library
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainViewModel>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
